@@ -43,7 +43,7 @@ class Sector(models.Model):
 
 
     
-class Staff(models.Model):
+class Empleados(models.Model):
         nombre = models.CharField(max_length=100, blank=True)
         sector = models.ForeignKey(Sector, on_delete=models.CASCADE, blank=True)
         telefono = models.PositiveBigIntegerField(blank=True)

@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name='staff',
+            model_name='Empleados',
             name='sector',
             field=models.ForeignKey(blank=True, on_delete=django.db.models.deletion.CASCADE, to='barrioprivado.sector'),
         ),

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import formularioResidente, formularioInvitado, formularioStaff
-from .models import Residente, Sector, Staff, Invitado
+from .forms import formularioResidente, formularioInvitado, formularioEmpleados
+from .models import Residente, Sector, Empleados, Invitado
 from django.contrib import messages
 
 def inicio(request):
@@ -12,7 +12,7 @@ def inicio(request):
     )
     return http_response
 
-def form_residentes(request):
+def form_Socios(request):
     if request.method == 'POST':
         formulario = formularioResidente(request.POST)
         
@@ -33,12 +33,12 @@ def form_residentes(request):
             
             
             # Redireccionar a la misma página para evitar reenvío del formulario
-            return redirect('formularioResidentes')
+            return redirect('formularioSocios')
             
     else:
         formulario1 = formularioResidente()
         
-    return render(request, 'residentes.html', {'formulario1': formulario1})
+    return render(request, 'Socios.html', {'formulario1': formulario1})
 
 
 
@@ -68,28 +68,28 @@ def form_invitado(request):
     return render(request, 'invitado.html', {'formulario2': formulario2})
 
 
-def form_staff(request):
+def form_Empleados(request):
     if request.method == 'POST':
-        formulario_staff = formularioStaff(request.POST)
+        formulario_Empleados = formularioEmpleados(request.POST)
         
-        if formulario_staff.is_valid():
-            informacion = formulario_staff.cleaned_data
+        if formulario_Empleados.is_valid():
+            informacion = formulario_Empleados.cleaned_data
             
-            miembrostaff = Staff(   nombre=informacion['nombre'],
+            miembroEmpleados = Empleados(   nombre=informacion['nombre'],
                                     sector=informacion['sector'],
                                     telefono=informacion['telefono'])
-            miembrostaff.save()
+            miembroEmpleados.save()
             
             # Mensaje de éxito
-            messages.success(request, f'Se ha guardado el miembro "{miembrostaff.nombre}" correctamente.')
+            messages.success(request, f'Se ha guardado el miembro "{miembroEmpleados.nombre}" correctamente.')
             
             # Redireccionar a la misma página para evitar reenvío del formulario
-            return redirect('formularioStaff')
+            return redirect('formularioEmpleados')
             
     else:
-        formulario3 = formularioStaff()
+        formulario3 = formularioEmpleados()
         
-    return render(request, 'staff.html', {'formulario3': formulario3})
+    return render(request, 'Empleados.html', {'formulario3': formulario3})
 
 def mostrar_sectores(request):
     # Obtener todos los sectores
@@ -98,7 +98,7 @@ def mostrar_sectores(request):
     # Crear una lista de trabajadores asociados a cada sector
     sectores_con_trabajadores = []
     for sector in sectores:
-        trabajadores = Staff.objects.filter(sector=sector)
+        trabajadores = Empleados.objects.filter(sector=sector)
         sectores_con_trabajadores.append({'sector': sector, 'trabajadores': trabajadores})
 
     return render(request, 'sectores.html', {'sectores_con_trabajadores': sectores_con_trabajadores})
@@ -109,15 +109,15 @@ def busqueda_resultados(request):
         palabra_clave = request.POST.get('palabra_clave', '')
 
         # Realizar las consultas para obtener los resultados de la búsqueda
-        resultados_residentes = Residente.objects.filter(nombre__icontains=palabra_clave)
+        resultados_Socios = Residente.objects.filter(nombre__icontains=palabra_clave)
         resultados_sectores = Sector.objects.filter(nombre__icontains=palabra_clave)
-        resultados_staff = Staff.objects.filter(nombre__icontains=palabra_clave)
+        resultados_Empleados = Empleados.objects.filter(nombre__icontains=palabra_clave)
 
         return render(request, 'busqueda_resultados.html', {
             'palabra_clave': palabra_clave,
-            'resultados_residentes': resultados_residentes,
+            'resultados_Socios': resultados_Socios,
             'resultados_sectores': resultados_sectores,
-            'resultados_staff': resultados_staff,
+            'resultados_Empleados': resultados_Empleados,
         })
     else:
         return render(request, 'busqueda_resultados.html')

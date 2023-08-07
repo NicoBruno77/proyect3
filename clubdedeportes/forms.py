@@ -24,7 +24,7 @@ class formularioInvitado(forms.Form):
 
 
     
-class formularioStaff(forms.Form):
+class formularioEmpleados(forms.Form):
     nombre = forms.CharField()
     sector = forms.ModelChoiceField(queryset=Sector.objects.all())
     telefono = forms.IntegerField()
