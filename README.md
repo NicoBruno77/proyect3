@@ -4,7 +4,7 @@ Proyecto 3 - Coderhouse
 <<<<<<< HEAD
 Se trata de un boceto de una página administrativa de un club de deportes
 =======
-Se trata de un boceto de una página administrativa de un barrio privado X
+Se trata de un boceto de una página administrativa de un clubdedeportes  X
 
 
 ------------------ FUNCIONALIDADES ------------------

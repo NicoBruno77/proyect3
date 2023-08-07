@@ -21,5 +21,5 @@ from .views import inicio
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicio, name="inicio"),
-    path('barrioprivado/', include('barrioprivado.urls')),
+    path('clubdedeportes/', include('clubdedeportes.urls')),
 ]

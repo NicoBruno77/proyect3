@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('nombre', models.CharField(blank=True, max_length=100)),
                 ('telefono', models.PositiveBigIntegerField(blank=True)),
-                ('sector', models.OneToOneField(blank=True, on_delete=django.db.models.deletion.CASCADE, to='barrioprivado.sector')),
+                ('sector', models.OneToOneField(blank=True, on_delete=django.db.models.deletion.CASCADE, to='clubdedeportes.sector')),
             ],
         ),
         migrations.CreateModel(
@@ -49,7 +49,7 @@ class Migration(migrations.Migration):
                 ('nombre', models.CharField(blank=True, max_length=20, verbose_name='Nombre y Apellido')),
                 ('apellido', models.CharField(blank=True, max_length=50)),
                 ('telefono', models.PositiveBigIntegerField(blank=True)),
-                ('residente', models.OneToOneField(default=None, on_delete=django.db.models.deletion.CASCADE, to='barrioprivado.residente', verbose_name='Nombre del Inquilino')),
+                ('residente', models.OneToOneField(default=None, on_delete=django.db.models.deletion.CASCADE, to='clubdedeportes.residente', verbose_name='Nombre del Inquilino')),
             ],
         ),
     ]

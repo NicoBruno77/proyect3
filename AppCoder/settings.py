@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'barrioprivado',
+    'clubdedeportes',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'AppCoder.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates_base/', BASE_DIR / 'barrioprivado' / 'templates/'],
+        'DIRS': [BASE_DIR / 'templates_base/', BASE_DIR / 'clubdedeportes' / 'templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

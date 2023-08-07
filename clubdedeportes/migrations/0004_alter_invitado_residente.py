@@ -7,13 +7,13 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('barrioprivado', '0003_rename_codigo_sector_sector_codigo'),
+        ('clubdedeportes', '0003_rename_codigo_sector_sector_codigo'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='invitado',
             name='residente',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='barrioprivado.residente', verbose_name='Nombre del Inquilino'),
+            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='clubdedeportes.residente', verbose_name='Nombre del Inquilino'),
         ),
     ]
